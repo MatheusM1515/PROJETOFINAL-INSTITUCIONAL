@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Thermo_Predict</title>
+
+    <!-- =======================
+       FONTES
+  ======================= -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Open+Sans:wght@400&family=Poppins:wght@500&display=swap"
+        rel="stylesheet">
+
+    <!-- =======================
+       CSS
+  ======================= -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #F1F5F9;
+            color: #1B1B1B;
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(90deg, #121b32, #002433);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            height: 80px;
+        }
+
+        .logo svg {
+            height: 60px;
+            display: block;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        /* LINKS HEADER */
+        nav a {
+            color: white;
+            margin-left: 30px;
+            text-decoration: none;
+            font-size: 17px;
+            position: relative;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* LINHA AZUL ANIMADA EMBAIXO DO LINK */
+
+        nav a::after {
+            content: "";
+            width: 0%;
+            height: 2px;
+            background: #06B6D4;
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            transition: 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+
+        .menu-projeto {
+            position: relative;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 60px;
+            left: 0;
+            width: 180px;
+            background: #1E293B;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.4s ease, opacity 0.4s ease;
+            opacity: 0;
+            z-index: 999;
+        }
+
+        .dropdown.open {
+            max-height: 500px;
+            opacity: 1;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 12px 20px;
+            color: white;
+            text-decoration: none;
+            font-family: 'Poppins', sans-serif;
+            position: relative;
+            transition: 0.3s;
+            font-size: 16px;
+        }
+
+        .dropdown a::after {
+            content: "";
+            width: 0%;
+            height: 2px;
+            background: #06B6D4;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            transition: 0.3s;
+        }
+
+        .dropdown a:hover::after {
+            width: 100%;
+        }
+
+        /* HERO */
+        .hero {
+            height: 90vh;
+            background: linear-gradient(rgba(2, 6, 23, 0.85), rgba(2, 6, 23, 0.9)),
+                url('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 52px;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 650px;
+            margin: 20px auto 0 auto;
+            opacity: 0.9;
+            line-height: 1.5;
+            color: white;
+        }
+    </style>
+</head>
+
+<!-- =======================
+       HTML
+  ======================= -->
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="logo">
+            <svg viewBox="0 0 300 70">
+                <path d="M35 10 L55 20 L55 40 Q35 60 15 40 L15 20 Z" fill="#FFFFFF" />
+                <polyline points="20,35 28,28 35,32 45,22" fill="none" stroke="#22C55E" stroke-width="2" />
+                <text x="70" y="40" font-family="Montserrat" font-size="22" fill="#FFFFFF" font-weight="600">
+                    Thermo_Predict
+                </text>
+            </svg>
+        </div>
+
+        <nav>
+            <a href="#">Início</a>
+
+            <div class="menu-projeto">
+                <a onclick="toggleMenu()">Projeto</a>
+
+                <div class="dropdown" id="dropdownProjeto">
+                    <a href="#problema">Problema</a>
+                    <a href="#solucao">Solução</a>
+                    <a href="#beneficios">Benefícios</a>
+                </div>
+            </div>
+
+            <a href="#">Produtos</a>
+            <a href="#">Sobre Nós</a>
+            <a href="#">Contato</a>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <h1>Monitoramento Inteligente de Vacinas</h1>
+        <p>
+            Sistema IOT que monitora temperatura e eventos de porta aberta, emitindo alertas preventivos para evitar
+            perdas de vacinas.
+        </p>
+    </section>
+
+    <!-- =======================
+       JAVASCRIPT
+  ======================= -->
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById("dropdownProjeto");
+            menu.classList.toggle("open");
+        }
+
+        // Fecha dropdown ao clicar fora
+
+        window.addEventListener("click", function (e) {
+            const menu = document.getElementById("dropdownProjeto");
+            if (!e.target.closest(".menu-projeto")) {
+                menu.classList.remove("open");
+            }
+        });
+    </script>
+
+</body>
+
+</html>
