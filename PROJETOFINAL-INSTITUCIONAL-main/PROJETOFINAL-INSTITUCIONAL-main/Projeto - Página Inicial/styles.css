@@ -1,0 +1,71 @@
+/* RESET */
+body {
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    background: #F5F7FA;
+}
+
+/* HEADER */
+header {
+    background: #0A2540;
+    color: white;
+    padding: 15px 30px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+}
+
+/* GRID CONTAINER */
+.container {
+    padding: 30px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+/* CARDS */
+.card {
+    background: #FFFFFF;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* CARD DO GRÁFICO */
+.grafico-card {
+    grid-column: span 2;
+}
+
+/* TITULOS */
+h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+/* STATUS */
+.status {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* CORES DE STATUS */
+.normal {
+    color: #2ECC71;
+}
+
+.atencao {
+    color: #F1C40F;
+}
+
+.critico {
+    color: #E74C3C;
+}
+
+/* LISTA DE EVENTOS */
+ul {
+    padding-left: 20px;
+    margin: 0;
+}
+
+li {
+    margin-bottom: 5px;
+}

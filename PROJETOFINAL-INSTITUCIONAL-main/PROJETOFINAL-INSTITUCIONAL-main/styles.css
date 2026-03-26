@@ -1,0 +1,187 @@
+/* =========================
+   RESET
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* =========================
+   BODY
+========================= */
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #F1F5F9;
+    color: #1B1B1B;
+}
+
+/* =========================
+   HEADER
+========================= */
+header {
+    background: linear-gradient(90deg, #121b32, #002433);
+    height: 80px;
+    padding: 0 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* =========================
+   LOGO
+========================= */
+.logo svg {
+    height: 60px;
+    display: block;
+}
+
+/* =========================
+   NAV
+========================= */
+nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+/* LINKS DO MENU */
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+    font-family: 'Poppins', sans-serif;
+
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: 100%;
+    cursor: pointer;
+}
+
+/* LINHA ANIMADA */
+nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+
+    width: 0%;
+    height: 2px;
+    background: #06B6D4;
+
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* =========================
+   MENU COM DROPDOWN
+========================= */
+.menu-projeto {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* DROPDOWN */
+.dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+
+    width: 180px;
+    background: #1E293B;
+    border-radius: 8px;
+
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    /* ANIMAÇÃO */
+    max-height: 0;
+    opacity: 0;
+
+    transition: max-height 0.4s ease,
+                opacity 0.4s ease;
+}
+
+/* 🔥 ABRIR AO PASSAR O MOUSE */
+.menu-projeto:hover .dropdown {
+    max-height: 500px;
+    opacity: 1;
+}
+
+/* LINKS DO DROPDOWN */
+.dropdown a {
+    padding: 12px 20px;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+
+    color: white;
+    text-decoration: none;
+
+    position: relative;
+}
+
+/* ANIMAÇÃO LINHA DROPDOWN */
+.dropdown a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    width: 0%;
+    height: 2px;
+    background: #06B6D4;
+
+    transition: width 0.3s ease;
+}
+
+.dropdown a:hover::after {
+    width: 100%;
+}
+
+/* =========================
+   HERO
+========================= */
+.hero {
+    height: 90vh;
+
+    background:
+        linear-gradient(rgba(2, 6, 23, 0.85),
+                        rgba(2, 6, 23, 0.9)),
+        url('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b');
+
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    color: white;
+    padding: 20px;
+}
+
+/* TÍTULO HERO */
+.hero h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 52px;
+    letter-spacing: -1px;
+}
+
+/* TEXTO HERO */
+.hero p {
+    margin-top: 20px;
+    max-width: 650px;
+
+    font-size: 18px;
+    line-height: 1.5;
+    opacity: 0.9;
+}

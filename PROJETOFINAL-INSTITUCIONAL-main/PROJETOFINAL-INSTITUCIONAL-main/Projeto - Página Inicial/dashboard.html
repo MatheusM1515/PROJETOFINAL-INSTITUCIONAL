@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard - VacciSafe</title>
+
+    <!-- Fonte -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Open+Sans&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        ❄️ Thermo_Predict - Dashboard
+    </header>
+
+    <!-- CONTAINER -->
+    <div class="container">
+
+        <!-- TEMPERATURA -->
+        <div class="card">
+            <h2>🌡 Temperatura</h2>
+            <p id="temp">5°C</p>
+        </div>
+
+        <!-- STATUS -->
+        <div class="card">
+            <h2>⚠ Status</h2>
+            <p id="status" class="status normal">Normal</p>
+        </div>
+
+        <!-- PORTA -->
+        <div class="card">
+            <h2>🚪 Porta</h2>
+            <p id="porta">Fechada</p>
+        </div>
+
+        <!-- GRÁFICO -->
+        <div class="card grafico-card">
+            <h2>📊 Histórico de Temperatura</h2>
+            <canvas id="grafico"></canvas>
+        </div>
+
+        <!-- EVENTOS -->
+        <div class="card">
+            <h2>📋 Eventos</h2>
+            <ul id="eventos">
+                <li>Sistema iniciado</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <!-- SCRIPT -->
+    <script>
+        // SIMULAÇÃO DE DADOS
+        let temperatura = 5;
+        let portaAberta = false;
+
+        function atualizarSistema() {
+
+            // varia temperatura
+            temperatura += (Math.random() - 0.5) * 2;
+
+            // simula porta abrindo
+            if (Math.random() < 0.2) {
+                portaAberta = !portaAberta;
+            }
+
+            document.getElementById("temp").innerText = temperatura.toFixed(1) + "°C";
+            document.getElementById("porta").innerText = portaAberta ? "Aberta" : "Fechada";
+
+            // STATUS
+            let statusEl = document.getElementById("status");
+
+            if (temperatura > 8 || temperatura < 2) {
+                statusEl.innerText = "Crítico";
+                statusEl.className = "status critico";
+            } else if (temperatura > 6 || temperatura < 3) {
+                statusEl.innerText = "Atenção";
+                statusEl.className = "status atencao";
+            } else {
+                statusEl.innerText = "Normal";
+                statusEl.className = "status normal";
+            }
+
+            // EVENTOS
+            if (portaAberta) {
+                let lista = document.getElementById("eventos");
+                let item = document.createElement("li");
+                item.innerText = "Porta aberta detectada!";
+                lista.prepend(item);
+            }
+
+            atualizarGrafico(temperatura);
+        }
+
+        setInterval(atualizarSistema, 2000);
+
+        // GRÁFICO
+        const ctx = document.getElementById('grafico').getContext('2d');
+
+        let dados = [];
+        let labels = [];
+
+        const grafico = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Temperatura (°C)',
+                    data: dados,
+                    borderColor: '#2E86DE',
+                    fill: false
+                }]
+            }
+        });
+
+        function atualizarGrafico(temp) {
+            if (dados.length > 10) {
+                dados.shift();
+                labels.shift();
+            }
+
+            dados.push(temp);
+            labels.push("");
+
+            grafico.update();
+        }
+    </script>
+
+</body>
+</html>
