@@ -1,0 +1,219 @@
+/* =========================
+   RESET
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* =========================
+   BODY
+========================= */
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #F1F5F9;
+    color: #1B1B1B;
+}
+
+/* =========================
+   HEADER
+========================= */
+header {
+    background: linear-gradient(90deg, #121b32, #002433);
+    height: 80px;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* LOGO */
+.logo svg {
+    height: 60px;
+    display: block;
+}
+
+/* NAV */
+nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: 100%;
+    cursor: pointer;
+}
+
+/* LINHA */
+nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0%;
+    height: 2px;
+    background: #06B6D4;
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* DROPDOWN */
+.menu-projeto {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 180px;
+    background: #1E293B;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.4s ease;
+}
+
+.menu-projeto:hover .dropdown {
+    max-height: 500px;
+    opacity: 1;
+}
+
+.dropdown a {
+    padding: 12px 20px;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    text-decoration: none;
+    position: relative;
+}
+
+.dropdown a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 2px;
+    background: #06B6D4;
+    transition: width 0.3s ease;
+}
+
+.dropdown a:hover::after {
+    width: 100%;
+}
+
+/* HERO */
+.hero {
+    height: 90vh;
+    background: linear-gradient(rgba(2,6,23,0.85), rgba(2,6,23,0.9)), url('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    padding: 20px;
+}
+
+/* SEÇÃO PROBLEMA */
+.problema-detalhado {
+    padding: 100px 20px;
+    background: #F8FAFC;
+    text-align: center;
+}
+
+.topo-problema {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.topo-problema h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 38px;
+    color: #0F172A;
+}
+
+.topo-problema h2::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: #0ea5e9;
+    margin: 12px auto 0 auto;
+    border-radius: 2px;
+}
+
+.subtitulo {
+    max-width: 640px;
+    margin: 20px auto 50px auto;
+    line-height: 1.6;
+}
+
+.subtitulo p {
+    font-size: 17px;
+    color: #475569;
+}
+
+/* CARDS */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 28px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.card {
+    width: 100%;
+    min-height: 150px;
+    border-radius: 16px;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 22px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 500;
+    color: #1E293B;
+    border: 1px solid #E2E8F0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s ease;
+}
+
+.card .icon {
+    margin-bottom: 12px;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    border: 1px solid #0ea5e9;
+    box-shadow: 0 12px 28px rgba(14, 165, 233, 0.2);
+}
+
+.card:hover .icon {
+    transform: scale(1.2);
+}
